@@ -87,7 +87,7 @@
           />
           <img
             class="gatsby-resp-image-image"
-            src="[./images/NEW_HOME_PAGE_C.png](https://raw.githubusercontent.com/marlonfrank30/f5-XCS-LB-WAAP-Policy-using-API-method/main/pictures/NEW_HOME_PAGE_C.webp)"
+            src="[https://raw.githubusercontent.com/marlonfrank30/f5-XCS-LB-WAAP-Policy-using-API-method/main/pictures/NEW_HOME_PAGE_C.webp)"
             alt="NEW HOME PAGE C"
             title="Figure: Homepage"
             loading="lazy"
