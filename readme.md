@@ -261,3 +261,7 @@
 
 
 source: https://f5-amer-ent.console.ves.volterra.io/web/workspaces/administration/personal-management/api_credentials
+
+
+next let's import the json file and then make necessary changes in the XCS Env Var to reflect your environemnt
+/pictures/XCS ENV VAR.png
