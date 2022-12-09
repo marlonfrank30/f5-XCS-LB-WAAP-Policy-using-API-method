@@ -267,3 +267,6 @@ source: https://f5-amer-ent.console.ves.volterra.io/web/workspaces/administratio
 To import the json file **F5 XCS Postman Collection.postman_collection.json** into Postman go under import  and then make necessary changes in the XCS Env Var to reflect your environemnt details such as tenant name, namespace, API cert and value, etc like the image below
 
 ![](./pictures/XCS%20ENV%20VAR.png)
+
+now right click on the tasks and chosose to run all the tasks and watch for a 200 message back in the response header
+![](./pictures/XCS%20ENV%20VAR2.png)
