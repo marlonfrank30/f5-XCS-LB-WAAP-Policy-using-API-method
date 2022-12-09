@@ -266,4 +266,4 @@ source: https://f5-amer-ent.console.ves.volterra.io/web/workspaces/administratio
 <h2 id="prerequisites">Importing JSON into POSTMAN</h2>
 To import the json file **F5 XCS Postman Collection.postman_collection.json** into Postman go under import  and then make necessary changes in the XCS Env Var to reflect your environemnt details such as tenant name, namespace, API cert and value, etc like the image below
 
-![](./https://github.com/marlonfrank30/f5-XCS-LB-WAAP-Policy-using-API-method/blob/db1034e5e53a1ed13ef9bff5db2a91046157ccf2/pictures/XCS%20ENV%20VAR.png)
+![](./pictures/XCS%20ENV%20VAR.png)
