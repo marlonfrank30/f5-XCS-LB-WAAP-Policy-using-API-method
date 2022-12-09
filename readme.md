@@ -87,7 +87,7 @@
           />
           <img
             class="gatsby-resp-image-image"
-            src="/docs/static/6cc23f597999ee52e128305c6621bd91/99e71/NEW_HOME_PAGE_C.png"
+            src="./images/NEW_HOME_PAGE_C.png"
             alt="NEW HOME PAGE C"
             title="Figure: Homepage"
             loading="lazy"
