@@ -77,7 +77,7 @@
               type="image/webp"
             />
           <source
-            srcset="/docs/static/6cc23f597999ee52e128305c6621bd91/b30f8/NEW_HOME_PAGE_C.png 500w,
+            srcset="https://raw.githubusercontent.com/marlonfrank30/f5-XCS-LB-WAAP-Policy-using-API-method/main/pictures/NEW_HOME_PAGE_C.webp" 500w,
 /docs/static/6cc23f597999ee52e128305c6621bd91/332ff/NEW_HOME_PAGE_C.png 1000w,
 /docs/static/6cc23f597999ee52e128305c6621bd91/99e71/NEW_HOME_PAGE_C.png 2000w,
 /docs/static/6cc23f597999ee52e128305c6621bd91/22748/NEW_HOME_PAGE_C.png 3000w,
