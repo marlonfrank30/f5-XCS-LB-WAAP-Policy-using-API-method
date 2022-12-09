@@ -256,6 +256,8 @@
 <ul>
 <li>Use in deployments after generating.</li>
 </ul>
-
+  </figure></p>
+</details>
+<details>
 </html>  
 source: https://f5-amer-ent.console.ves.volterra.io/web/workspaces/administration/personal-management/api_credentials
