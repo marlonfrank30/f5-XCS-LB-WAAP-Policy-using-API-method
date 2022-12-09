@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "17b6221f-9476-4841-818d-c35083d5b22b",
+		"name": "F5 XCS Postman Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7133087"
+	},
+	"item": [
+		{
+			"name": "Creating an XCS Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"f5-xcs-auto-demo-api-cert-cyaitlde\",\r\n  \"namespace\": \"system\",\r\n  \"uid\": \"3ee1c8db-0343-469e-a410-c9c1e5c85943\",\r\n  \"type\": \"API_TOKEN\",\r\n  \"create_timestamp\": \"2022-11-03T14:28:39.833481720Z\",\r\n  \"expiry_timestamp\": \"2023-02-01T14:28:39.833492638Z\",\r\n  \"user_email\": \"m.frank@f5.com\",\r\n  \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/web/namespaces",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"namespaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login to XCS API",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{host}}/api/web/namespaces",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"web",
+						"namespaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete HTTP Load Balancer",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"metadata\": {\r\n    \"name\": \"madebeen-amer-ent-f5demos-com\",\r\n    \"namespace\": \"m-frank\",\r\n    \"annotations\": {},\r\n    \"disable\": false\r\n  },\r\n  \"spec\": {\r\n    \"domains\": [\r\n      \"madebeen.amer-ent.f5demos.com\"\r\n    ],\r\n    \"https_auto_cert\": {\r\n      \"http_redirect\": true,\r\n      \"add_hsts\": true,\r\n      \"port\": 443,\r\n      \"tls_config\": {\r\n        \"default_security\": {}\r\n      },\r\n      \"no_mtls\": {},\r\n      \"default_header\": {},\r\n      \"enable_path_normalize\": {}\r\n    },\r\n    \"downstream_tls_certificate_expiration_timestamps\": [\r\n      {}\r\n    ],\r\n    \"advertise_on_public_default_vip\": {},\r\n    \"default_route_pools\": [\r\n      {\r\n        \"pool\": {\r\n          \"tenant\": \"f5-amer-ent-qyyfhhfj\",\r\n          \"namespace\": \"m-frank\",\r\n          \"name\": \"madebeen-origin\",\r\n          \"kind\": \"origin_pool\"\r\n        },\r\n        \"weight\": 1,\r\n        \"priority\": 1,\r\n        \"endpoint_subsets\": {}\r\n      }\r\n    ],\r\n    \"routes\": [\r\n      {\r\n        \"simple_route\": {\r\n          \"http_method\": \"ANY\",\r\n          \"path\": {\r\n            \"regex\": \"(.*?)\"\r\n          },\r\n          \"origin_pools\": [\r\n            {\r\n              \"pool\": {\r\n                \"tenant\": \"f5-amer-ent-qyyfhhfj\",\r\n                \"namespace\": \"m-frank\",\r\n                \"name\": \"madebeen-origin\",\r\n                \"kind\": \"origin_pool\"\r\n              },\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpoint_subsets\": {}\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"auto_host_rewrite\": {}\r\n        }\r\n      }\r\n    ],\r\n    \"app_firewall\": {\r\n      \"tenant\": \"f5-amer-ent-qyyfhhfj\",\r\n      \"namespace\": \"m-frank\",\r\n      \"name\": \"f5-demo-waf\",\r\n      \"kind\": \"app_firewall\"\r\n    },\r\n    \"add_location\": true,\r\n    \"no_challenge\": {},\r\n    \"user_id_client_ip\": {},\r\n    \"disable_rate_limit\": {},\r\n    \"waf_exclusion_rules\": [],\r\n    \"data_guard_rules\": [],\r\n    \"blocked_clients\": [],\r\n    \"trusted_clients\": [],\r\n    \"ddos_mitigation_rules\": [],\r\n    \"service_policies_from_namespace\": {},\r\n    \"round_robin\": {},\r\n    \"enable_ddos_detection\": {},\r\n    \"enable_malicious_user_detection\": {},\r\n    \"enable_api_discovery\": {\r\n      \"disable_learn_from_redirect_traffic\": {}\r\n    },\r\n    \"bot_defense\": {\r\n      \"regional_endpoint\": \"US\",\r\n      \"policy\": {\r\n        \"protected_app_endpoints\": [\r\n          {\r\n            \"metadata\": {\r\n              \"name\": \"bot1-defense-demo\",\r\n              \"disable\": false\r\n            },\r\n            \"http_methods\": [\r\n              \"METHOD_ANY\"\r\n            ],\r\n            \"protocol\": \"BOTH\",\r\n            \"any_domain\": {},\r\n            \"path\": {\r\n              \"path\": \"/\"\r\n            },\r\n            \"web\": {},\r\n            \"mitigation\": {\r\n              \"block\": {\r\n                \"status\": \"OK\",\r\n                \"body\": \"string:///VGhlIHJlcXVlc3RlZCBVUkwgd2FzIHJlamVjdGVkLiBQbGVhc2UgY29uc3VsdCB3aXRoIHlvdXIgYWRtaW5pc3RyYXRvci4=\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"js_insert_all_pages\": {\r\n          \"javascript_location\": \"AFTER_HEAD\"\r\n        },\r\n        \"js_download_path\": \"/common.js\"\r\n      },\r\n      \"timeout\": 1000\r\n    },\r\n    \"disable_api_definition\": {},\r\n    \"disable_ip_reputation\": {},\r\n    \"dns_info\": [],\r\n    \"state\": \"VIRTUAL_HOST_READY\",\r\n    \"auto_cert_info\": {\r\n      \"auto_cert_state\": \"CertificateValid\",\r\n      \"auto_cert_expiry\": \"2023-01-26T15:37:30Z\",\r\n      \"auto_cert_subject\": \"CN=madebeen.amer-ent.f5demos.com\",\r\n      \"auto_cert_issuer\": \"CN=R3,O=Let's Encrypt,C=US\",\r\n      \"dns_records\": []\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/api/config/namespaces/{{namespace}}/http_loadbalancers/madebeen-amer-ent-f5demos-com",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"{{namespace}}",
+						"http_loadbalancers",
+						"madebeen-amer-ent-f5demos-com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete HTTP Origin_Pools",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"metadata\": {\r\n    \"name\": \"madebeen-origin\",\r\n    \"namespace\": \"m-frank\",\r\n    \"labels\": {},\r\n    \"annotations\": {},\r\n    \"disable\": false\r\n  },\r\n  \"spec\": {\r\n    \"origin_servers\": [\r\n      {\r\n        \"public_name\": {\r\n          \"dns_name\": \"www.madebeen.com\"\r\n        },\r\n        \"labels\": {}\r\n      }\r\n    ],\r\n    \"use_tls\": {\r\n      \"use_host_header_as_sni\": {},\r\n      \"tls_config\": {\r\n        \"default_security\": {}\r\n      },\r\n      \"skip_server_verification\": {},\r\n      \"no_mtls\": {}\r\n    },\r\n    \"port\": 443,\r\n    \"same_as_endpoint_port\": {},\r\n    \"healthcheck\": [],\r\n    \"loadbalancer_algorithm\": \"LB_OVERRIDE\",\r\n    \"endpoint_selection\": \"LOCAL_PREFERRED\",\r\n    \"advanced_options\": {\r\n      \"connection_timeout\": 300,\r\n      \"http_idle_timeout\": 300,\r\n      \"disable_circuit_breaker\": {},\r\n      \"disable_outlier_detection\": {},\r\n      \"no_panic_threshold\": {},\r\n      \"disable_subsets\": {}\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/api/config/namespaces/{{namespace}}/origin_pools/madebeen-origin",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"{{namespace}}",
+						"origin_pools",
+						"madebeen-origin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete HTTP Monitor",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"metadata\": {\r\n    \"name\": \"madebeen-http\",\r\n    \"namespace\": \"m-frank\",\r\n    \"labels\": {},\r\n    \"annotations\": {},\r\n    \"disable\": false\r\n  },\r\n  \"spec\": {\r\n    \"http_health_check\": {\r\n      \"use_origin_server_name\": {},\r\n      \"path\": \"/\",\r\n      \"use_http2\": false,\r\n      \"headers\": {},\r\n      \"request_headers_to_remove\": [],\r\n      \"expected_status_codes\": []\r\n    },\r\n    \"timeout\": 3,\r\n    \"interval\": 15,\r\n    \"unhealthy_threshold\": 1,\r\n    \"healthy_threshold\": 3,\r\n    \"jitter_percent\": 30\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/api/config/namespaces/{{namespace}}/healthchecks/madebeen-http",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"{{namespace}}",
+						"healthchecks",
+						"madebeen-http"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create HTTP Monitor",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"metadata\": {\r\n    \"name\": \"madebeen-http\",\r\n    \"namespace\": \"m-frank\",\r\n    \"labels\": {},\r\n    \"annotations\": {},\r\n    \"disable\": false\r\n  },\r\n  \"spec\": {\r\n    \"http_health_check\": {\r\n      \"use_origin_server_name\": {},\r\n      \"path\": \"/\",\r\n      \"use_http2\": false,\r\n      \"headers\": {},\r\n      \"request_headers_to_remove\": [],\r\n      \"expected_status_codes\": []\r\n    },\r\n    \"timeout\": 3,\r\n    \"interval\": 15,\r\n    \"unhealthy_threshold\": 1,\r\n    \"healthy_threshold\": 3,\r\n    \"jitter_percent\": 30\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/api/config/namespaces/{{namespace}}/healthchecks",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"{{namespace}}",
+						"healthchecks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create HTTP Origin_Pools",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"metadata\": {\r\n    \"name\": \"madebeen-origin\",\r\n    \"namespace\": \"m-frank\",\r\n    \"labels\": {},\r\n    \"annotations\": {},\r\n    \"disable\": false\r\n  },\r\n  \"spec\": {\r\n    \"origin_servers\": [\r\n      {\r\n        \"public_name\": {\r\n          \"dns_name\": \"www.madebeen.com\"\r\n        },\r\n        \"labels\": {}\r\n      }\r\n    ],\r\n    \"use_tls\": {\r\n      \"use_host_header_as_sni\": {},\r\n      \"tls_config\": {\r\n        \"default_security\": {}\r\n      },\r\n      \"skip_server_verification\": {},\r\n      \"no_mtls\": {}\r\n    },\r\n    \"port\": 443,\r\n    \"same_as_endpoint_port\": {},\r\n    \"healthcheck\": [],\r\n    \"loadbalancer_algorithm\": \"LB_OVERRIDE\",\r\n    \"endpoint_selection\": \"LOCAL_PREFERRED\",\r\n    \"advanced_options\": {\r\n      \"connection_timeout\": 300,\r\n      \"http_idle_timeout\": 300,\r\n      \"disable_circuit_breaker\": {},\r\n      \"disable_outlier_detection\": {},\r\n      \"no_panic_threshold\": {},\r\n      \"disable_subsets\": {}\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/api/config/namespaces/{{namespace}}/origin_pools",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"{{namespace}}",
+						"origin_pools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create HTTP Load Balancer",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "APIToken {{F5DC_API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"metadata\": {\r\n    \"name\": \"madebeen-amer-ent-f5demos-com\",\r\n    \"namespace\": \"m-frank\",\r\n    \"annotations\": {},\r\n    \"disable\": false\r\n  },\r\n  \"spec\": {\r\n    \"domains\": [\r\n      \"madebeen.amer-ent.f5demos.com\"\r\n    ],\r\n    \"https_auto_cert\": {\r\n      \"http_redirect\": true,\r\n      \"add_hsts\": true,\r\n      \"port\": 443,\r\n      \"tls_config\": {\r\n        \"default_security\": {}\r\n      },\r\n      \"no_mtls\": {},\r\n      \"default_header\": {},\r\n      \"enable_path_normalize\": {}\r\n    },\r\n    \"downstream_tls_certificate_expiration_timestamps\": [\r\n      {}\r\n    ],\r\n    \"advertise_on_public_default_vip\": {},\r\n    \"default_route_pools\": [\r\n      {\r\n        \"pool\": {\r\n          \"tenant\": \"f5-amer-ent-qyyfhhfj\",\r\n          \"namespace\": \"m-frank\",\r\n          \"name\": \"madebeen-origin\",\r\n          \"kind\": \"origin_pool\"\r\n        },\r\n        \"weight\": 1,\r\n        \"priority\": 1,\r\n        \"endpoint_subsets\": {}\r\n      }\r\n    ],\r\n    \"routes\": [\r\n      {\r\n        \"simple_route\": {\r\n          \"http_method\": \"ANY\",\r\n          \"path\": {\r\n            \"regex\": \"(.*?)\"\r\n          },\r\n          \"origin_pools\": [\r\n            {\r\n              \"pool\": {\r\n                \"tenant\": \"f5-amer-ent-qyyfhhfj\",\r\n                \"namespace\": \"m-frank\",\r\n                \"name\": \"madebeen-origin\",\r\n                \"kind\": \"origin_pool\"\r\n              },\r\n              \"weight\": 1,\r\n              \"priority\": 1,\r\n              \"endpoint_subsets\": {}\r\n            }\r\n          ],\r\n          \"headers\": [],\r\n          \"auto_host_rewrite\": {}\r\n        }\r\n      }\r\n    ],\r\n    \"app_firewall\": {\r\n      \"tenant\": \"f5-amer-ent-qyyfhhfj\",\r\n      \"namespace\": \"m-frank\",\r\n      \"name\": \"f5-demo-waf\",\r\n      \"kind\": \"app_firewall\"\r\n    },\r\n    \"add_location\": true,\r\n    \"no_challenge\": {},\r\n    \"user_id_client_ip\": {},\r\n    \"disable_rate_limit\": {},\r\n    \"waf_exclusion_rules\": [],\r\n    \"data_guard_rules\": [],\r\n    \"blocked_clients\": [],\r\n    \"trusted_clients\": [],\r\n    \"ddos_mitigation_rules\": [],\r\n    \"service_policies_from_namespace\": {},\r\n    \"round_robin\": {},\r\n    \"enable_ddos_detection\": {},\r\n    \"enable_malicious_user_detection\": {},\r\n    \"enable_api_discovery\": {\r\n      \"disable_learn_from_redirect_traffic\": {}\r\n    },\r\n    \"bot_defense\": {\r\n      \"regional_endpoint\": \"US\",\r\n      \"policy\": {\r\n        \"protected_app_endpoints\": [\r\n          {\r\n            \"metadata\": {\r\n              \"name\": \"bot1-defense-demo\",\r\n              \"disable\": false\r\n            },\r\n            \"http_methods\": [\r\n              \"METHOD_ANY\"\r\n            ],\r\n            \"protocol\": \"BOTH\",\r\n            \"any_domain\": {},\r\n            \"path\": {\r\n              \"path\": \"/\"\r\n            },\r\n            \"web\": {},\r\n            \"mitigation\": {\r\n              \"block\": {\r\n                \"status\": \"OK\",\r\n                \"body\": \"string:///VGhlIHJlcXVlc3RlZCBVUkwgd2FzIHJlamVjdGVkLiBQbGVhc2UgY29uc3VsdCB3aXRoIHlvdXIgYWRtaW5pc3RyYXRvci4=\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"js_insert_all_pages\": {\r\n          \"javascript_location\": \"AFTER_HEAD\"\r\n        },\r\n        \"js_download_path\": \"/common.js\"\r\n      },\r\n      \"timeout\": 1000\r\n    },\r\n    \"disable_api_definition\": {},\r\n    \"disable_ip_reputation\": {},\r\n    \"dns_info\": [],\r\n    \"state\": \"VIRTUAL_HOST_READY\",\r\n    \"auto_cert_info\": {\r\n      \"auto_cert_state\": \"CertificateValid\",\r\n      \"auto_cert_expiry\": \"2023-01-26T15:37:30Z\",\r\n      \"auto_cert_subject\": \"CN=madebeen.amer-ent.f5demos.com\",\r\n      \"auto_cert_issuer\": \"CN=R3,O=Let's Encrypt,C=US\",\r\n      \"dns_records\": []\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{host}}/api/config/namespaces/{{namespace}}/http_loadbalancers",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"config",
+						"namespaces",
+						"{{namespace}}",
+						"http_loadbalancers"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "VES_P12_PASSWORD",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "F5DC_API_TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "f5-amer-ent.console.ves.volterra.io"
+		},
+		{
+			"key": "metadata",
+			"value": "madebeen-amer-ent-f5demos-com",
+			"type": "string"
+		},
+		{
+			"key": "namespace",
+			"value": "m-frank",
+			"type": "string"
+		}
+	]
+}
