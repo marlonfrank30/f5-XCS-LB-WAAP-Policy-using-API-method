@@ -68,7 +68,7 @@
   ></span>
   <picture>
           <source
-              srcset="/docs/static/6cc23f597999ee52e128305c6621bd91/10636/NEW_HOME_PAGE_C.webp 500w,
+              srcset="https://raw.githubusercontent.com/marlonfrank30/f5-XCS-LB-WAAP-Policy-using-API-method/main/pictures/NEW_HOME_PAGE_C.webp) 500w,
 /docs/static/6cc23f597999ee52e128305c6621bd91/e00f7/NEW_HOME_PAGE_C.webp 1000w,
 /docs/static/6cc23f597999ee52e128305c6621bd91/56b60/NEW_HOME_PAGE_C.webp 2000w,
 /docs/static/6cc23f597999ee52e128305c6621bd91/09625/NEW_HOME_PAGE_C.webp 3000w,
