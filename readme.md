@@ -268,9 +268,9 @@ To import the json file **F5 XCS Postman Collection.postman_collection.json** in
 
 ![](./pictures/XCS%20ENV%20VAR.png)
 
-now right click on the tasks and chosose to run all the tasks and watch for a 200 message back in the response header
+Now right click on the tasks and choose to run all the tasks as follows:
 ![](./pictures/XCS%20ENV%20VAR2.png)
 
                       
-Look for 200 OK 
+Watch for a HTTP 200 response message code back in the response header
 ![](./pictures/XCS%20ENV%20VAR3.png)
